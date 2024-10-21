@@ -30,10 +30,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and release to DockerHub
+      - name: Build and Release to DockerHub
         env:
           NAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          REPO: djangocicd
+          REPO: ${{ secrets.DOCKERHUB_REPO }}
         run: |
           docker build -t $REPO .
           docker tag $REPO:latest $NAME/$REPO:latest
